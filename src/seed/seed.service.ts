@@ -17,8 +17,10 @@ export class SeedService {
   ) {}
 
   async executeSeed() {
+    await this.pokemonModel.deleteMany({});
+
     const { data } = await this.axios.get<PokeResponse>(
-      'https://pokeapi.co/api/v2/pokemon?limit=10',
+      'https://pokeapi.co/api/v2/pokemon?limit=200',
     );
 
     const pokemons = data.results.map(({ name, url }) => {
@@ -32,7 +34,7 @@ export class SeedService {
     });
 
     try {
-      const response = await this.pokemonModel.create(pokemons);
+      const response = await this.pokemonModel.insertMany(pokemons);
       return response;
     } catch (error) {
       console.log(error);

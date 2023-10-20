@@ -39,3 +39,4 @@ lerna-debug.log*
 
 # Env Variables
 .env
+.env.template

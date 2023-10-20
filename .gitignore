@@ -36,3 +36,7 @@ lerna-debug.log*
 
 # Mongo
 /mongo
+
+# Env Variables
+.env
+.env.template
